@@ -14,7 +14,8 @@ body{
     grid-template-areas:
     "header"
     "nav"
-    "main";
+    "main"
+    "footer";
     /* justify-content: center;   */
 }
 
@@ -29,12 +30,23 @@ header{
 
 nav{
     grid-area: "nav";
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 nav ul{
     display: flex;
     flex-direction: row;
     list-style: none;
+}
+
+nav li{
+    background-color: rgb(255, 218, 55);
+    flex-basis: 20%;
+    padding: 8px;
+    margin: 8px;
 }
 
 main{
@@ -45,15 +57,16 @@ main{
 
 }
 
-
-/* section styling */
-
-.project-card{
-    background-color: #FFF;
-    width: 100%;
-    margin: auto;
+footer{
+    grid-area: "footer";
+    text-align: center;
+    background-color: rgb(211, 180, 40);
+    color: #FFF;
     padding: 20px;
 }
+
+
+/* section styling */
 
 section{
     background-color: rgb(211, 180, 40);
@@ -63,6 +76,23 @@ section{
     padding: .5em;
     border-bottom: 1px  rgb(189, 161, 35) solid ;
 }
+
+.projects{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+   
+}
+
+.project-card{
+    background-color: #FFF;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+
 
 .socials{
     display: flex;
