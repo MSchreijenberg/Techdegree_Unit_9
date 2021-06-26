@@ -87,7 +87,7 @@ section{
 .project-card{
     background-color: #FFF;
     width: 100%;
-    margin: auto;
+    margin: 8px auto;
     padding: 20px;
     text-align: center;
 }
