@@ -64,7 +64,7 @@ nav{
     padding: 8px;
     background-color: #777777;
     position: fixed; 
-    height: 50px;;
+    height: 60px;;
     width: 100%;
     z-index: 1;
 }
@@ -75,24 +75,26 @@ nav{
     justify-content: space-between; 
     align-items: center;  
     list-style: none;
-    padding: 0;    
+    padding: 0;  
+    margin-top: 10px;  
 }
 
 nav li{    
     flex-basis: 20%;
-    padding: 10px;    
+       
     text-align: center;
     transition: all ease-in-out 0.3s;
-}
-
-nav li:hover{
-    background-color:  rgb(158, 158, 158);
-    border-radius: 5px;
 }
 
 nav li a{
     color: #FFF;
     font-size: 14px;
+}
+
+nav li a:hover{
+    background-color:  rgb(158, 158, 158);
+    border-radius: 5px;
+    padding: 10px 20px; 
 }
 
 a.anchor {
@@ -234,7 +236,7 @@ section h2{
 .reveal{
     transform: translateY(100px);
     opacity: 0;
-    transition: all 2s ease;
+    transition: all 1.5s ease;
 }
 
 .reveal.active{
