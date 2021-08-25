@@ -6,10 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">    
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
+               <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <!-- <li><a href="#artanddesign">Art and design</a></li>
+                <li><a href="#games">Games</a></li> -->
+            </ul>
+        </nav>
         <header>
+            
             <div class="main-header">
                 <h1>Maartje Schreijenberg</h1>
                
@@ -20,67 +30,40 @@
                 <h2>Creative</h2> 
                 <h2>Game developer</h2>
             </div>
-            <div class="dot"></div>
-        </header>
-        <nav>
-            <ul class="main-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="webdevelopment.html">Web Development</a></li>
-                <li><a href="art-and-design.html">Art and design</a></li>
-                <li><a href="games.html">Games</a></li>
-            </ul>
-        </nav>
+       
+        </header>   
+
         <main>
+            <a class="anchor" id="about"></a>
             <section class="about">
                 <h2>About me</h2>
                 <div class="card">
                     <p>Hi! I am Maartje.</p>
                     <p>Welcome to my portfolio page.</p>
+                    <p>I made this page to show my HTML, CSS and Javascript programming skills.</p>
+                    <br>
+                    <p>When building this page, my main goal was to use <b>Javascript</b> to fill the page, in stead of copy-pasting
+                        everything in HTML.
+                    </p>
+                    <br>                
+                    <p>My current job is working as a <b>Test Engineer</b>, testing websites and applications on functionality and accessibility.</p>
+                    
                 </div>
-            </section>
-            <section class="webdevMain">
-                <h2>Web development projects</h2>
-                <div class="card">
-                    <a href="https://mschreijenberg.github.io/Techdegree_Unit_7/"></a>
-                    <img src="images/webapp.PNG" alt="Screenshot of WebApp project">
-                    <a href="">Link to project</a>
-                    <p>Text about project</p>
-                </div>
-                <div class="more">
-                    <a href="webdevelopment.html">See more</a>
-                </div>
-            </section>
-            <section class="gamesMain">
-                <h2>Gamedev</h2>
-                <div class="card">
-                    <img src="images/capttoucan.png">
-                    <h3>Captain Toucan and the lost pineapples</h3>
-                    <ul class="languages">
-                        <li>C#</li>
-                        <li>Unity</li>
-                        <li>Blender</li>
-                    </ul>
-                    <p>I made this game following a Gamedev.tv course on gamemaking with Unity and C#. I used Blender to make all the 3D game assets</p>
-                </div>
-                <div class="more">
-                    <a href="games.html">See more</a>
-                </div>
-            </section>
-            <section class="artMain">
-                <h2>Art and design</h2>
-                <div class="card">
-                    <img src="">
-                    <h3>Captain Toucan and the lost pineapples</h3>
-                    <p>I made this game following a Gamedev.tv course on gamemaking with Unity and C#. I used Blender to make all the 3D game assets</p>
-                </div>
-                <div class="more">
-                    <a href="art-and-design.html">See more</a>
-                </div>
+           </section>
+           
+            <a class="anchor" id="projects"></a>
+           <section class="webdev" id="webdev">
+            <h2>Web development projects</h2>
+               
+                <div class= "webDevCards">
+
+                </div>                
+                
             </section>
 
-            <section class="socials"> 
-            </section>
-
+            <div class="socials"> 
+            </div>
+            
         </main>
         <footer>
             <p>Created by Maartje Schreijenberg</p>
@@ -89,6 +72,6 @@
 
         <script src=app.js></script>
 
-
+     
     </body>
 </html>

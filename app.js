@@ -1,6 +1,5 @@
 
-//create socials
-
+//create socials 
 const socialSection = document.querySelector(".socials");
 const socialList = ["instagram", "linkedin", "twitter"];
 const urlList = ["https://www.instagram.com/littletailsinlife/",
@@ -18,31 +17,18 @@ for(let i=0; i<socialList.length; i++){
     socialSection.appendChild(container);
 }
 
-
-{/* <div class="social-container">              
-<a href="https://www.instagram.com/littletailsinlife/"  class="social-img" target="_blank"><img src="svgs/instagram.svg" alt="instagram logo"></a>
-</div> 
-<div class="social-container">   
-<a href="https://www.linkedin.com/in/mschreijenberg/" class="social-img" target="_blank"><img src="svgs/linkedin.svg" alt="linkedin logo"></a>
-</div>
-<div class="social-container">   
-<a href="https://twitter.com/littletailsinl1" class="social-img" target="_blank"><img src="svgs/twitter.svg" alt="twitter logo"></a>
-</div> */}
-
 //function to create a card
-const section = document.querySelector(".webdev")
-
-function createCard(languages, img, url, text, alt, projectTitle){
+function createCard(cards, languages, img, url, text, alt, projectTitle){
     let cardDiv = document.createElement("div");
-    cardDiv.className = "card";
+    cardDiv.className = "card reveal";
     
     cardDiv.innerHTML =
     `
-    <a href="${url}"  target="_blank">
-        <img src="images/${img}" alt="${alt}">
-    </a>
+    ${createImageWithUrlButton(url, img, alt)}
     <h3>${projectTitle}</h3>
-    <p>${text}</p>                
+    <div class= cardText>
+        <p>${text}</p>
+    </div>                    
     `
     let languageList = document.createElement("ul");
     languageList.className="languages";
@@ -52,36 +38,116 @@ function createCard(languages, img, url, text, alt, projectTitle){
         languageList.appendChild(li);
     }
     
-    cardDiv.appendChild(languageList);
-
-    section.appendChild(cardDiv);
+    cardDiv.appendChild(languageList);   
+    cards.push(cardDiv);
 }
 
-//create cards with content for Web development page
-let currentPage = window.location.pathname;
-console.log(currentPage);
+function createImageWithUrlButton(url, img, alt){
+    let image;   
+    image =
+    `
+    <img src="images/${img}" alt="${alt}">
 
-if(currentPage == "/webdevelopment.html"){
-    createCard(["CSS", "SASS"], "sass.PNG", 
+    <a class="project-button "href="${url}"  target="_blank">See Project     
+    </a>
+            
+    `
+    return image;
+}
+
+//function to set the cards on a page
+function setCards(div, cards){
+    for(let i = 0; i<cards.length; i++){
+        if(i==0){
+            div.appendChild(cards[i]);
+        }else{
+            div.insertBefore(cards[i], div.childNodes[0]);
+        }        
+    }
+}
+
+
+//create cards with content for Web development page
+let webDevCards = [];
+let webDevDiv = document.querySelector(".webDevCards")
+
+
+    createCard(webDevCards, ["HTML", "CSS"], "responsive.PNG", 
+    "https://mschreijenberg.github.io/Techdegree_Unit_2/", 
+    "Using CSS and media queries, I made a site that is responsive for three different screen sizes (mobile, tablet and desktop).", 
+    "Screenshot of Responsive design project", "Responsive design project");
+
+    createCard(webDevCards, ["CSS", "SASS"], "sass.PNG", 
     "https://mschreijenberg.github.io/Techdegree_Unit_4/", 
     "Using Sass to create an awesome styled site", 
     "Screenshot of Sass Styling project", "Sass styling project");
     
-    createCard(["HTML", "CSS", "Javascript"], "photogallery.PNG", 
+    createCard(webDevCards,["HTML", "CSS", "Javascript"], "photogallery.PNG", 
     "https://mschreijenberg.github.io/Techdegree_Unit_5/", 
     "In this project we had to implement an existing javascript feature called 'baguetteBox'.I also wrote Javascript code to make a custom search bar.", 
     "Screenshot of Photo gallery project", "Photo gallery project");
     
-    createCard(["HTML", "CSS", "Javascript"], "wheelofsucces.PNG", 
+    createCard(webDevCards,["HTML", "CSS", "Javascript"], "wheelofsucces.PNG", 
     "https://mschreijenberg.github.io/Techdegree_Unit_6/",
     "For this project I used Javascript to build a working guessing game, called Wheel of Succes",
     "Screenshot of Wheel of Success project", "Wheel of Success");
     
-    createCard(["HTML", "CSS", "Javascript"], "webapp.PNG", 
+    createCard(webDevCards,["HTML", "CSS", "Javascript"], "webapp.PNG", 
     "https://mschreijenberg.github.io/Techdegree_Unit_7/", 
     "Writing lots of CSS and using Javascript to make the page function like a dashboard", 
-    "screenshot of the WebApp project", "WebApp project");
+    "screenshot of the WebApp project", "WebApp project"); 
+
+    createCard(webDevCards,["HTML", "CSS", "Javascript"], "startuplibrary.PNG", 
+    "https://mschreijenberg.github.io/Techdegree_Unit_8/", 
+    "I made this employee directory with Javascript. The directory is filled with random users, which are fetched from an API, and then displayed on the site. ", 
+    "screenshot of the API project", "Using an API to build a page"); 
+    
+    
+setCards(webDevDiv, webDevCards);
+
+// Awesome site features
+
+webDevDiv.addEventListener('mouseover', (e)=>{
+    if(e.target !== webDevDiv){
+        showOrHideButton(e.target, true);
+    }
+
+});
+
+webDevDiv.addEventListener('mouseout', (e)=>{
+    if(e.target !== webDevDiv){
+        showOrHideButton(e.target, false)
+    }
+
+});
+
+function showOrHideButton(target, hover){
+    const card = target.closest(".card");
+    const button = card.querySelector(".project-button")
+    const img = card.querySelector("img");
+   if(hover){
+    img.style.opacity = "0.3";
+    button.style.display = "block";
+   }else{
+    img.style.opacity = "1";
+    button.style.display = "none";
+   }
+   
 }
 
+window.addEventListener('scroll', reveal);
 
-//create changing card for
+function reveal(){
+    let reveals = document.querySelectorAll(".reveal");
+    for(let i=0; i< reveals.length; i++){
+        let windowHeight = window.innerHeight;
+        let revealtop = reveals[i].getBoundingClientRect().top;
+        let revealpoint = 150;
+
+        if(revealtop < windowHeight - revealpoint){
+            reveals[i].classList.add('active');
+        }else{
+            reveals[i].classList.remove('active');
+        }
+    }
+}
